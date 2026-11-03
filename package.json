@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Lupins Nails and Spa website",
   "scripts": {
-    "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve",
-    "serve": "npx serve _site",
-    "dev": "npx @11ty/eleventy --serve --port=8080"
+    "build": "bunx @11ty/eleventy",
+    "start": "bunx @11ty/eleventy --serve",
+    "serve": "bunx serve docs",
+    "dev": "bunx @11ty/eleventy --serve --port=9001"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.7"

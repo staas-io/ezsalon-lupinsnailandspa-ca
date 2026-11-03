@@ -1,159 +1,166 @@
-// Dynamic content loader for services, contact info, and business hours
-// Configure API endpoints here or via data attributes
-const API_CONFIG = {
-  services: document.body.dataset.servicesApi || null,
-  contact: document.body.dataset.contactApi || null,
-  hours: document.body.dataset.hoursApi || null
-};
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text || '';
+  return div.innerHTML;
+}
 
-async function loadContactInfo() {
-  const addressEl = document.getElementById('footer-address');
-  const phoneEl = document.getElementById('footer-phone');
-  const emailEl = document.getElementById('footer-email');
+function formatPrice(cents) {
+  if (typeof cents !== 'number') return '';
+  return '$' + (cents / 100).toFixed(2);
+}
+
+function formatTime(hour) {
+  const h = hour % 12 || 12;
+  const ampm = hour < 12 ? 'AM' : 'PM';
+  return h + ':00 ' + ampm;
+}
+
+function renderServices(services) {
+  const listEl = document.getElementById('services-list');
+  if (!listEl) return;
   
-  if (!API_CONFIG.contact && !addressEl) return;
+  if (!Array.isArray(services) || services.length === 0) {
+    listEl.innerHTML = '<p>No services available.</p>';
+    return;
+  }
+  
+  let html = '';
+  services.forEach(service => {
+    const name = escapeHtml(service.name || '');
+    const price = service.priceCents ? formatPrice(service.priceCents) : (service.price || '');
+    const duration = service.durationMinutes ? service.durationMinutes + ' min' : (service.duration || '');
+    html += '<div class="service-item">';
+    html += '  <div class="service-item__info">';
+    html += '    <h4 class="service-item__name">' + name + '</h4>';
+    if (service.description) {
+      html += '    <p class="service-item__desc">' + escapeHtml(service.description) + '</p>';
+    }
+    html += '  </div>';
+    html += '  <div class="service-item__meta">';
+    if (price) html += '    <span class="service-item__price">' + escapeHtml(price) + '</span>';
+    if (duration) html += '    <span class="service-item__duration">' + escapeHtml(duration) + '</span>';
+    html += '  </div>';
+    html += '</div>';
+  });
+  listEl.innerHTML = html;
+}
+
+async function loadServices() {
+  const apiUrl = document.body.dataset.servicesApi;
+  if (!apiUrl) return;
   
   try {
-    if (API_CONFIG.contact) {
-      const response = await fetch(API_CONFIG.contact);
-      const data = await response.json();
-      
-      if (addressEl && data.address) {
-        addressEl.innerHTML = data.address.replace(/\n/g, '<br>');
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error('Failed to load services');
+    let data = await res.json();
+    
+    // Handle different response formats
+    if (data.json) {
+      try {
+        data = typeof data.json === 'string' ? JSON.parse(data.json) : data.json;
+      } catch (e) {
+        // ignore
       }
-      if (phoneEl && data.phone) {
-        phoneEl.textContent = data.phone;
-        phoneEl.href = 'tel:' + data.phone.replace(/[^+\d]/g, '');
+    }
+    
+    let services = [];
+    if (Array.isArray(data)) {
+      services = data;
+    } else if (data.services && Array.isArray(data.services)) {
+      services = data.services;
+    } else if (data.categories && Array.isArray(data.categories)) {
+      // Flatten categories
+      data.categories.forEach(cat => {
+        if (cat.services && Array.isArray(cat.services)) {
+          cat.services.forEach(s => {
+            s.categoryName = s.categoryName || cat.name;
+            services.push(s);
+          });
+        }
+      });
+    }
+    
+    renderServices(services);
+  } catch (err) {
+    console.error('Error loading services:', err);
+  }
+}
+
+async function loadContactAndHours() {
+  const contactEl = document.getElementById('footer-address');
+  const phoneEl = document.getElementById('footer-phone');
+  const emailEl = document.getElementById('footer-email');
+  const hoursEl = document.getElementById('footer-hours');
+  
+  const contactApi = document.body.dataset.contactApi || document.body.dataset.hoursApi || document.body.dataset.settingsApi;
+  if (!contactApi) return;
+  
+  try {
+    const res = await fetch(contactApi);
+    if (!res.ok) throw new Error('Failed to load contact');
+    let data = await res.json();
+    
+    // Handle wrapped JSON string format
+    if (data.json) {
+      try {
+        data = typeof data.json === 'string' ? JSON.parse(data.json) : data.json;
+      } catch (e) {
+        // ignore
       }
-      if (emailEl && data.email) {
+    }
+    
+    // Extract from settings format
+    const about = data.about || {};
+    const businessHours = data.businessHours || {};
+    
+    if (contactEl && about.address) {
+      contactEl.textContent = about.address;
+    }
+    if (phoneEl && about.phone) {
+      phoneEl.textContent = about.phone;
+      phoneEl.href = 'tel:' + about.phone.replace(/[^+\d]/g, '');
+    }
+    if (emailEl) {
+      if (about.email) {
+        emailEl.textContent = about.email;
+        emailEl.href = 'mailto:' + about.email;
+      } else if (data.email) {
         emailEl.textContent = data.email;
         emailEl.href = 'mailto:' + data.email;
-      }
-    } else {
-      // Fallback to current hardcoded values if no API configured
-      if (addressEl) addressEl.innerHTML = '45 Hollis Ave Unit 6,<br>Stratford, PE C1B 4A1';
-      if (phoneEl) {
-        phoneEl.textContent = '902-916-8785';
-        phoneEl.href = 'tel:9029168785';
-      }
-      if (emailEl) {
+      } else {
+        // Fallback email
         emailEl.textContent = 'Lupinspeiholding@gmail.com';
         emailEl.href = 'mailto:Lupinspeiholding@gmail.com';
       }
     }
-  } catch (error) {
-    console.error('Error loading contact info:', error);
-    // Use fallback
-    if (addressEl) addressEl.innerHTML = '45 Hollis Ave Unit 6,<br>Stratford, PE C1B 4A1';
-    if (phoneEl) {
-      phoneEl.textContent = '902-916-8785';
-      phoneEl.href = 'tel:9029168785';
+    
+    if (hoursEl && businessHours) {
+      const days = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      let html = '';
+      days.forEach((day, idx) => {
+        const h = businessHours[day];
+        if (!h) return;
+        html += '<div class="hours__row"><span>' + dayNames[idx] + '</span><span>';
+        if (h.closed) {
+          html += 'Closed';
+        } else {
+          html += h.open + ' - ' + h.close;
+        }
+        html += '</span></div>';
+      });
+      if (html) {
+        hoursEl.innerHTML = html;
+      } else if (data.hours) {
+        hoursEl.textContent = formatTime(data.hours.open) + ' - ' + formatTime(data.hours.close);
+      }
     }
-    if (emailEl) {
-      emailEl.textContent = 'Lupinspeiholding@gmail.com';
-      emailEl.href = 'mailto:Lupinspeiholding@gmail.com';
-    }
+  } catch (err) {
+    console.error('Error loading contact/hours:', err);
   }
 }
 
-async function loadBusinessHours() {
-  const hoursEl = document.getElementById('footer-hours');
-  if (!hoursEl) return;
-  
-  try {
-    if (API_CONFIG.hours) {
-      const response = await fetch(API_CONFIG.hours);
-      const data = await response.json();
-      
-      if (Array.isArray(data.hours)) {
-        hoursEl.innerHTML = data.hours.map(h => 
-          `<div><strong>${h.days}:</strong> ${h.hours}</div>`
-        ).join('');
-      } else if (typeof data === 'object') {
-        hoursEl.innerHTML = Object.entries(data).map(([days, hours]) => 
-          `<div><strong>${days}:</strong> ${hours}</div>`
-        ).join('');
-      }
-    } else {
-      // Fallback
-      hoursEl.innerHTML = `
-        <div><strong>Mon - Fri:</strong> 9:00 am - 8:00 pm</div>
-        <div><strong>Saturday:</strong> 9:00 am - 7:00 pm</div>
-        <div><strong>Sunday:</strong> Closed</div>
-      `;
-    }
-  } catch (error) {
-    console.error('Error loading business hours:', error);
-    hoursEl.innerHTML = `
-      <div><strong>Mon - Fri:</strong> 9:00 am - 8:00 pm</div>
-      <div><strong>Saturday:</strong> 9:00 am - 7:00 pm</div>
-      <div><strong>Sunday:</strong> Closed</div>
-    `;
-  }
-}
-
-async function loadServices() {
-  const servicesEl = document.getElementById('services-list');
-  if (!servicesEl) return;
-  
-  try {
-    if (API_CONFIG.services) {
-      const response = await fetch(API_CONFIG.services);
-      const data = await response.json();
-      
-      let services = [];
-      if (Array.isArray(data)) {
-        services = data;
-      } else if (data && Array.isArray(data.services)) {
-        services = data.services;
-      }
-      
-      if (services.length > 0) {
-        servicesEl.innerHTML = services.map(service => {
-          let priceText = '';
-          if (service.priceCents != null) {
-            const dollars = (service.priceCents / 100).toFixed(2);
-            priceText = `$${dollars}`;
-          } else if (service.price) {
-            priceText = service.price;
-          }
-          return `
-            <div class="service-item">
-              <div class="service-item__name">${escapeHtml(service.name || '')}</div>
-              ${priceText ? `<div class="service-item__price">${escapeHtml(priceText)}</div>` : ''}
-              ${service.description ? `<div class="service-item__description">${escapeHtml(service.description)}</div>` : ''}
-              ${service.durationMinutes ? `<div class="service-item__duration">${escapeHtml(service.durationMinutes + ' min')}</div>` : ''}
-            </div>
-          `;
-        }).join('');
-      } else {
-        servicesEl.innerHTML = '<p style="text-align: center; color: #666;">No services available.</p>';
-      }
-    } else {
-      // Fallback message or could load from static data
-      servicesEl.innerHTML = '<p style="text-align: center; color: #666;">Services will be loaded from our service provider API.</p>';
-    }
-  } catch (error) {
-    console.error('Error loading services:', error);
-    servicesEl.innerHTML = '<p style="text-align: center; color: #666;">Unable to load services at this time.</p>';
-  }
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    loadContactInfo();
-    loadBusinessHours();
-    loadServices();
-  });
-} else {
-  loadContactInfo();
-  loadBusinessHours();
+document.addEventListener('DOMContentLoaded', function() {
   loadServices();
-}
+  loadContactAndHours();
+});
