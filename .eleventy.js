@@ -2,7 +2,7 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
-  
+
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/assets/css");
   eleventyConfig.addPassthroughCopy("src/assets/js");
@@ -10,13 +10,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("images");
-  
+
   return {
     dir: {
       input: "src",
       includes: "_includes",
       data: "_data",
-      output: "_site"
+      output: "docs"
     },
     templateFormats: ["html", "md", "liquid", "njk"],
     htmlTemplateEngine: "liquid",
