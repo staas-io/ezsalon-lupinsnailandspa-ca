@@ -1,0 +1,65 @@
+---
+layout: layouts/base.liquid
+title: Contact Us
+permalink: /contact/
+---
+<section class="section">
+  <div class="container">
+    <h1 class="section__title">Contact Us</h1>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto;">
+      <div>
+        <h2 style="color: #8000b6; margin-bottom: 1.5rem; font-family: 'Merienda', cursive;">Get In Touch</h2>
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="margin-bottom: 0.5rem;">Address</h3>
+          <div id="contact-address">Loading...</div>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="margin-bottom: 0.5rem;">Phone</h3>
+          <div><a href="tel:" id="contact-phone" style="color: #8000b6;">Loading...</a></div>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+          <h3 style="margin-bottom: 0.5rem;">Email</h3>
+          <div><a href="mailto:" id="contact-email" style="color: #8000b6;">Loading...</a></div>
+        </div>
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">Business Hours</h3>
+          <div id="contact-hours">Loading...</div>
+        </div>
+      </div>
+      <div>
+        <h2 style="color: #8000b6; margin-bottom: 1.5rem; font-family: 'Merienda', cursive;">Book Appointment</h2>
+        <p style="margin-bottom: 1.5rem;">Ready to book your appointment? Use our online booking system.</p>
+        <a href="https://lupinsnails.staas.io/book.html" target="_blank" class="hero__button" style="background-color: #8000b6; color: white;">Book Online</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Also populate contact page elements
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(() => {
+    const footerAddr = document.getElementById('footer-address');
+    const footerPhone = document.getElementById('footer-phone');
+    const footerEmail = document.getElementById('footer-email');
+    const footerHours = document.getElementById('footer-hours');
+    
+    if (footerAddr && document.getElementById('contact-address')) {
+      document.getElementById('contact-address').innerHTML = footerAddr.innerHTML;
+    }
+    if (footerPhone && document.getElementById('contact-phone')) {
+      const contactPhone = document.getElementById('contact-phone');
+      contactPhone.textContent = footerPhone.textContent;
+      contactPhone.href = footerPhone.href;
+    }
+    if (footerEmail && document.getElementById('contact-email')) {
+      const contactEmail = document.getElementById('contact-email');
+      contactEmail.textContent = footerEmail.textContent;
+      contactEmail.href = footerEmail.href;
+    }
+    if (footerHours && document.getElementById('contact-hours')) {
+      document.getElementById('contact-hours').innerHTML = footerHours.innerHTML;
+    }
+  }, 500);
+});
+</script>

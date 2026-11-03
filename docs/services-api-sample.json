@@ -1,0 +1,140 @@
+{
+    "categories": [
+        {
+            "id": "site_cat_4",
+            "name": "Combo Services",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_8",
+            "name": "Dipping Powder",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_2",
+            "name": "Gel-X",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_7",
+            "name": "Head Nursing - Facial Relax",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_5",
+            "name": "Kid Service",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_0",
+            "name": "Manicure",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_3",
+            "name": "Nails Enhancement",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_1",
+            "name": "Pedicure",
+            "color": null,
+            "source": "SITE"
+        },
+        {
+            "id": "site_cat_6",
+            "name": "Value Add on Services",
+            "color": null,
+            "source": "SITE"
+        }
+    ],
+    "services": [
+        {
+            "id": "site_svc_3_1",
+            "categoryId": "site_cat_3",
+            "durationMinutes": 60,
+            "name": "Acrylic Nails Full Set",
+            "priceCents": 5500,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
+            "tags": [
+                "nail_extension"
+            ],
+            "categoryName": "Nails Enhancement"
+        },
+        {
+            "id": "site_svc_3_0",
+            "categoryId": "site_cat_3",
+            "durationMinutes": 60,
+            "name": "Acrylic Refill",
+            "priceCents": 4500,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
+            "tags": [
+                "nail_extension"
+            ],
+            "categoryName": "Nails Enhancement"
+        },
+        {
+            "id": "site_svc_8_3",
+            "categoryId": "site_cat_8",
+            "durationMinutes": 60,
+            "name": "Add Shellac",
+            "priceCents": 1000,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
+            "tags": [
+                "dipping_powder",
+                "shellac"
+            ],
+            "categoryName": "Dipping Powder"
+        },
+        {
+            "id": "site_svc_3_3",
+            "categoryId": "site_cat_3",
+            "durationMinutes": 60,
+            "name": "Bio Gel (Full set)",
+            "priceCents": 6000,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
+            "tags": [
+                "nail_extension",
+                "shellac"
+            ],
+            "categoryName": "Nails Enhancement"
+        },
+        {
+            "id": "site_svc_3_4",
+            "categoryId": "site_cat_3",
+            "durationMinutes": 60,
+            "name": "Bio Gel Overlay",
+            "priceCents": 5000,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
+            "tags": [
+                "nail_extension",
+                "shellac"
+            ],
+            "categoryName": "Nails Enhancement"
+        },
+        {
+            "id": "site_svc_3_2",
+            "categoryId": "site_cat_3",
+            "durationMinutes": 60,
+            "name": "Bio Gel Refill",
+            "priceCents": 5000,
+            "showOnBooking": 1,
+            "source": "SITE",
+            "supplyCostCents": 0,
