@@ -1,0 +1,7 @@
+{
+  "name": "LUPINS NAILS AND SPA",
+  "description": "Located conveniently in Stratford, LUPINS NAILS AND SPA is proud to be one of the best nail salons in the area. We wish to bring our beloved customers a happy time when using our services.",
+  "servicesApi": "https://lupinsnails.staas.io/api/services",
+  "settingsApi": "https://lupinsnails.staas.io/api/settings",
+  "bookingUrl": "https://lupinsnails.staas.io/book.html"
+}

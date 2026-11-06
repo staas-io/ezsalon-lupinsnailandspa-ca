@@ -1,0 +1,94 @@
+/*
+ * Hand-written additions on top of style.css (which is the original site's
+ * compiled CSS). Only behaviour the original did with JavaScript lives here.
+ */
+
+/* Mobile nav toggle: original used a <div>, ours is a <button> */
+button.menu__span {
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.menu__top {
+  display: block;
+}
+
+/* Hero: cross-fade slider (Swiper "fade" effect in the original) */
+.section__hero .swiper-wrapper {
+  display: grid;
+  transform: none;
+}
+.section__hero .swiper-slide {
+  grid-area: 1 / 1;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+.section__hero .swiper-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+.section__hero .slider-button span,
+.section__hero .pagin > div > div {
+  cursor: pointer;
+}
+
+/* Testimonials: horizontal slider */
+[data-testimonials] .swiper-wrapper {
+  transition: transform 0.5s ease;
+}
+[data-testimonials] .swiper-slide {
+  width: 100%;
+  flex-shrink: 0;
+  height: auto;
+}
+.arrow__slider img {
+  filter: invert(1);
+}
+
+/* Announcement popup: markup is hidden until JS opens it */
+.announcement-popup .close-btn {
+  border: 0;
+  padding: 0;
+  font: inherit;
+}
+.announcement-popup .mySlides.is-current {
+  display: block;
+}
+
+/* Back-to-top button */
+#scroll-top {
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Keyboard focus (original had none) */
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #8000b6;
+  outline-offset: 2px;
+}
+
+/* Contact form status line */
+.form-status {
+  margin-top: 12px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Accordion: allow keyboard users to see state */
+.accordion > div:first-child {
+  user-select: none;
+}
+.form-status:empty {
+  display: none;
+}
+
+/* Category titles are <h2> (the original used <h3> under an <h1>, skipping a level) */
+:where(.accordion, [data-service-category]) h2 {
+  margin: 0;
+}

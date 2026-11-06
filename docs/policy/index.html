@@ -1,96 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" itemscope itemtype="https://schema.org/NailSalon">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <title>Policy | LUPINS NAILS AND SPA</title>
   <meta name="description" content="Located conveniently in Stratford, LUPINS NAILS AND SPA is proud to be one of the best nail salons in the area. We wish to bring our beloved customers a happy time when using our services.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@600&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <meta name="author" content="LUPINS NAILS AND SPA">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LUPINS NAILS AND SPA">
+  <meta property="og:description" content="Located conveniently in Stratford, LUPINS NAILS AND SPA is proud to be one of the best nail salons in the area. We wish to bring our beloved customers a happy time when using our services.">
+  <meta property="og:image" content="/assets/images/og-logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta itemprop="priceRange" content="$$">
+  <link rel="icon" href="/assets/images/favicon.webp">
+  <link rel="preload" href="/assets/fonts/pt-sans-normal-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/extra.css">
 </head>
 <body data-services-api="https://lupinsnails.staas.io/api/services" data-contact-api="https://lupinsnails.staas.io/api/settings" data-hours-api="https://lupinsnails.staas.io/api/settings">
-  <header class="header">
-    <nav class="nav container">
-      <div class="nav__logo">
-        <a href="/">LUPINS NAILS AND SPA</a>
+<div class="min-h-screen flex flex-col relative">
+<header class="sticky bg-[#d3ad32] top-0 z-100 z-[10] w-full bg-[#d3ad32] shrink-0">
+  <div class="lg:block hidden max-h-[60px] bg-[#fff]"><ul class="flex gap-[30px] justify-center items-center list-disc pl-5 text-[#8000b6] text-[19px] font-[600] py-[5px]"><li>Be Shine with Lupins</li><li>You are</li></ul></div>
+  <div class="max-h-[150px] py-[10px] lg:bg-inherit bg-[#d3ad32] relative">
+    <div class="container">
+      <div class="flex items-center justify-between h-full">
+        <a href="/" class="max-h-[150px]"><img src="/assets/images/header-logo-3.webp" alt="LUPINS NAILS AND SPA" itemprop="logo" class="lg:max-h-[100px] max-h-[90px] h-auto"></a>
+        <nav class="lg:flex hidden" aria-label="Main">
+          <ul class="flex items-center whitespace-nowrap">
+            <li class="desktop__li"><a href="/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">Home</a></li>
+            <li class="desktop__li"><a href="/about/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">About us</a></li>
+            <li class="desktop__li"><a href="/services/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">Services</a></li>
+            <li class="desktop__li"><a href="/coupons/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">Coupons</a></li>
+            <li class="desktop__li"><a href="/gallery/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">Gallery</a></li>
+            <li class="desktop__li"><a href="https://lupinsnails.staas.io/book.html" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]" target="_blank" rel="noopener noreferrer">Booking</a></li>
+            <li class="desktop__li"><a href="/policy/" class="router-link-active bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]" aria-current="page">Policy</a></li>
+            <li class="desktop__li"><a href="/contact/" class="bg-[#d3ad32] leading-[40px] inline-block px-[11px] text-[22px] font-ptsans font-[600] text-black hover:text-[#8000b6] active:text-[#8000b6]">Contact us</a></li>
+          </ul>
+        </nav>
+        <div class="lg:hidden block"><button type="button" class="cursor-pointer menu__span" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu"><span class="menu__open"></span></button></div>
       </div>
-      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav__menu" id="navMenu">
-        <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="/about/" class="nav__link">About us</a></li>
-        <li class="nav__item"><a href="/services/" class="nav__link">Services</a></li>
-        <li class="nav__item"><a href="/coupons/" class="nav__link">Coupons</a></li>
-        <li class="nav__item"><a href="/gallery/" class="nav__link">Gallery</a></li>
-        <li class="nav__item"><a href="https://lupinsnails.staas.io/book.html" class="nav__link nav__link--booking" target="_blank">Booking</a></li>
-        <li class="nav__item"><a href="/policy/" class="nav__link">Policy</a></li>
-        <li class="nav__item"><a href="/contact/" class="nav__link">Contact us</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="main">
-    <section class="section">
-  <div class="container">
-    <h1 class="section__title">Policy</h1>
-    <div style="max-width: 800px; margin: 0 auto;">
-      <p>Policy information coming soon.</p>
+    </div>
+    <div class="lg:hidden block absolute w-full z-10">
+      <nav aria-label="Mobile">
+        <ul class="menu__top" id="navMenu">
+          <li class="flex flex-col mobile__li"><a href="/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">Home</a></li>
+          <li class="flex flex-col mobile__li"><a href="/about/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">About us</a></li>
+          <li class="flex flex-col mobile__li"><a href="/services/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">Services</a></li>
+          <li class="flex flex-col mobile__li"><a href="/coupons/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">Coupons</a></li>
+          <li class="flex flex-col mobile__li"><a href="/gallery/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">Gallery</a></li>
+          <li class="flex flex-col mobile__li"><a href="https://lupinsnails.staas.io/book.html" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold" target="_blank" rel="noopener noreferrer">Booking</a></li>
+          <li class="flex flex-col mobile__li"><a href="/policy/" class="router-link-active bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold" aria-current="page">Policy</a></li>
+          <li class="flex flex-col mobile__li"><a href="/contact/" class="bg-[#d3ad32] py-[14px] border-t border-[#e8e8e8] px-[25px] font-ptsans text-[12px] uppercase text-mobile mobile__active font-semibold">Contact us</a></li>
+        </ul>
+      </nav>
     </div>
   </div>
-</section>
+</header>
+<main class="grow">
+<section style="background-color:#f5f5f5;" class="sm:py-[40px] py-[30px]"><div class="container"><div class="flex items-center justify-between"><h1 class="text-[30px] font-light font-jose uppercase text-[#000] ckeditor-custom" itemprop="name"><p><strong>Policy</strong></p></h1><div class=""><a href="/" class="text-[17px] font-ptsans text-[#000] uppercase"> Home / </a><div style="display:inline-block;" class="text-[17px] font-ptsans text-[#000] uppercase ckeditor-custom"><p><strong>Policy</strong></p></div></div></div></div></section><section class="md:py-[50px] py-[30px]" style="background-color:#f6f6f6;"><div class="container"><div class="ckeditor-custom"><div class="in-container"><div class="container"><div class="in-content"><section id="embed_Policy"><style type="text/css">
+                    .e-Policy {
+                        text-align: center;
+                    }
 
-  </main>
+                    .eP-Title,
+                    .in-content .eP-Title {
+                        font-weight: bold;
+                        font-size: 21px;
+                    }
 
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__section">
-        <h4 class="footer__title">CONTACT US</h4>
-        <div class="footer__contact" id="footer-contact">
-          <div class="footer__contact-item">
-            <span>📍</span>
-            <div id="footer-address">Loading...</div>
-          </div>
-          <div class="footer__contact-item">
-            <span>📞</span>
-            <div><a href="tel:" id="footer-phone">Loading...</a></div>
-          </div>
-          <div class="footer__contact-item">
-            <span>✉️</span>
-            <div><a href="mailto:" id="footer-email">Loading...</a></div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="footer__section">
-        <h4 class="footer__title">BUSINESS HOURS</h4>
-        <div class="footer__hours" id="footer-hours">
-          <div>Loading...</div>
-        </div>
-      </div>
-      
-      <div class="footer__section">
-        <h4 class="footer__title">FOLLOW US</h4>
-        <div class="footer__social">
-          <a href="https://www.facebook.com/lupinsnails" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
-          <a href="https://www.google.com/search?q=Lupins+Nails+%26+Spa" target="_blank" rel="noopener noreferrer" aria-label="Google">G</a>
-          <a href="https://www.instagram.com/lupinsnails.pei" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-        </div>
-      </div>
-    </div>
-    
-    <div class="footer__bottom">
-      <div class="container">
-        <p>© 2023 LUPINS NAILS AND SPA. All Rights Reserved. <a href="/blog/">Blog</a></p>
-      </div>
-    </div>
-  </footer>
+                    .policy-content {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        padding: 16px;
+                    }
 
-  <script src="/js/main.js"></script>
-  <script src="/js/dynamic-content.js"></script>
+                    .policy-content p {
+                        margin: 0;
+                    }
+                </style><section class="e-Policy"><p class="eP-Title" style="text-align:center;">Please Book before 1 hour for the best experience</p><p class="eP-Title" style="text-align:center;">&nbsp;</p><p><a class="inline-flex items-center justify-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-gray-700 font-semibold px-6 py-3 rounded transition-colors duration-200 no-underline" target="_blank" rel="noopener noreferrer" href="https://lupinsnails.staas.io/book.html">&nbsp;Make An Appointment&nbsp;</a></p></section></section><div class="policy-content"><p style="text-align:justify;"><br>• We have to refuse to serve Rude, mean, or disrespectful people</p><p style="text-align:justify;">• Your satisfaction is guaranteed. If you are ever dissatisfied with any service in the salon we will gladly make the corrections necessary to exceed your expectations within 3 days of your original services. No refund is given after it has been rendered.</p><p style="text-align:justify;">• We love to do children's nails! However, unattended children in the salon are disruptive and dangerous. We use many products that are harmful if ingested or applied to unprotected skin. If you have children under 12 who are not receiving nail services, please keep them safe .</p><p style="text-align:justify;">• We hate to say it but FOR CUSTOMERS SAFETY: Spa chairs have a maximum capacity of 250lbs</p><p style="text-align:justify;">• Please ensure you have payment with us before you leave for services. If you are not satisfied with your nails, we will happily fix them</p></div></div></div></div></div></div></section>
+
+</main>
+<footer class="py-[70px]" style="background-color:#efe9d4;"><div class="container"><div class="grid lg:grid-cols-3 md:grid-cols-2"><div class=""><h4 class="text__decor text-[20px] text-[#8000b6] leading-[26px] font-[600]" style="font-family:'Merienda', cursive;">CONTACT US</h4><div class=""><table class="mb-[15px]"><tr itemprop="address" itemscope itemtype="http://schema.org/PostalAddress"><td class="align-top block mt-[4px] mr-[12px]"><img src="/assets/images/setting-icons8-location-50.png" alt="Icon Location" itemprop="image" class="w-[16px] h-[16px]"></td><td class="text-[16px] max-w-[250px] mb-[10px] text-[#000] font-normal font-ptsans ckeditor-custom" itemprop="streetAddress"><p id="footer-address">45 Hollis Ave Unit 6,<br>Stratford, PE C1B 4A1</p></td></tr><tr><td class="align-top block mt-[4px] mr-[12px]"><img src="/assets/images/setting-icons8-call-50.png" alt="Icon Phone" itemprop="image" class="w-[16px] h-[16px]"></td><td class="text-[16px] max-w-[250px] mb-[10px] text-[#000] font-normal font-ptsans ckeditor-custom" itemprop="telephone"><p><a href="tel:902-916-8785" id="footer-phone">902-916-8785</a></p></td></tr><tr><td class="align-top block mt-[4px] mr-[12px]"><img src="/assets/images/setting-icons8-mail-50.png" alt="Icon Mail" itemprop="image" class="w-[16px] h-[16px]"></td><td class="text-[16px] max-w-[250px] mb-[10px] text-[#000] font-normal font-ptsans ckeditor-custom" itemprop="email"><p><a href="mailto:Lupinspeiholding@gmail.com" id="footer-email">Lupinspeiholding@gmail.com</a></p></td></tr></table></div></div><div class=""><h4 class="text__decor text-[20px] text-[#8000b6] leading-[26px] font-[600]" style="font-family:'Merienda', cursive;">BUSINESS HOURS</h4><div class=""><table class="mb-[15px]"><tbody id="footer-hours"><tr class="" itemprop="openingHours" content="Mon - Fri: 9:00 am - 8:00 pm"><td class="align-top block mt-[4px] mr-[12px]"><span class="text-[16px] mb-[10px] text-[#000] font-ptsans font-bold">Mon - Fri:</span></td><td class="text-[16px] mb-[10px] text-[#000] font-normal font-ptsans">9:00 am - 8:00 pm</td></tr><tr class="" itemprop="openingHours" content="Saturday: 9:00 am - 7:00 pm"><td class="align-top block mt-[4px] mr-[12px]"><span class="text-[16px] mb-[10px] text-[#000] font-ptsans font-bold">Saturday:</span></td><td class="text-[16px] mb-[10px] text-[#000] font-normal font-ptsans">9:00 am - 7:00 pm</td></tr><tr class="" itemprop="openingHours" content="Sunday: Closed"><td class="align-top block mt-[4px] mr-[12px]"><span class="text-[16px] mb-[10px] text-[#000] font-ptsans font-bold">Sunday:</span></td><td class="text-[16px] mb-[10px] text-[#000] font-normal font-ptsans">Closed</td></tr></tbody></table></div></div><div class=""><h4 class="text__decor text-[20px] text-[#8000b6] leading-[26px] font-[600]" style="font-family:'Merienda', cursive;">FOLLOW US</h4><div class="flex items-center gap-[15px] mb-[10px]"><a href="https://www.facebook.com/lupinsnails" rel="noopener noreferrer" target="_blank" itemprop="url" title="Facebook icon"><img itemprop="image" src="/assets/images/icon-facebook.png" alt="Facebook icon" class="w-[30px] h-[30px]"></a><a href="https://www.google.com/search?q=Lupins+Nails+%26+Spa&amp;stick=H4sIAAAAAAAA_-NgU1I1qDBJMk01NbZMMTI0S0pNSrO0MqhIM0uyMDQzTk0ysjAwMTNKWcQq5FNakJlXrOCXmJlTrKCmEFyQCAB-mSYnPgAAAA&amp;hl=en&amp;mat=CalgYfJ807ZTElcBeenfiOgZNve26XJrdYsvj8AFI9fqfxb4cCp5glnlmFJAGptoHTNtpa4Ir-ughsFeaKi13QKTjeJjXsFo-g__TnMXB-hws41DovM1loPSpX55NJ3G3Y8&amp;authuser=0" rel="noopener noreferrer" target="_blank" itemprop="url" title="Google icon"><img itemprop="image" src="/assets/images/icon-google.png" alt="Google icon" class="w-[30px] h-[30px]"></a><a href="https://www.instagram.com/lupinsnails.pei" rel="noopener noreferrer" target="_blank" itemprop="url" title="Instagram icon"><img itemprop="image" src="/assets/images/icon-instagram.png" alt="Instagram icon" class="w-[30px] h-[30px]"></a></div></div></div></div></footer>
+<div><div class="lg:py-[30px] pb-[120px] bg-[#d3ad32]"><div class="container font-ptsans text-[#31251c] font-bold lg:text-[16px] text-[13px] lg:text-left text-center"><p><strong>© 2023 LUPINS NAILS AND SPA. All Rights Reserved. </strong><a href="/blog/"><strong>Blog</strong></a></p></div></div></div>
+<div class="px-[20px] z-10 md:px-0 md:w-[40px] w-full fixed md:right-[30px] md:bottom-[80px] bottom-[10px]"><div class="inline-flex md:flex-col justify-end flex-row gap-[10px] w-full"><a href="tel:902-916-8785" aria-label="Call us" rel="noopener noreferrer" class="footer__icon md:w-[50px] w-1/2 h-[50px] rounded-[5px] inline-flex items-center justify-center" style="background-color:#d3ad32;"><img class="w-[30px] h-[30px]" src="/assets/images/footer-phone-call.png" alt=""></a><a href="/policy/" aria-label="Book an appointment" class="footer__icon md:w-[50px] w-1/2 h-[50px] rounded-[5px] inline-flex items-center justify-center" style="background-color:#d3ad32;"><img class="w-[30px] h-[30px]" src="/assets/images/footer-calendar.png" alt=""></a></div><div role="button" tabindex="0" aria-label="Back to top" id="scroll-top" class="cursor-pointer absolute md:right-[-10px] right-[20px] self-center uppercase w-[50px] h-[50px] md:bottom-[-60px] bottom-[60px] rounded-full flex items-center justify-center" style="background-color:#000000;"><span class="iconify i-mdi:keyboard-arrow-up w-[30px] h-[30px] absolute top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2" aria-hidden="true" style="color:#ffffff;"></span></div></div>
+</div>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/dynamic-content.js"></script>
 </body>
 </html>

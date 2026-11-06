@@ -3,13 +3,12 @@ const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-  // Copy static assets
-  eleventyConfig.addPassthroughCopy("src/assets/css");
-  eleventyConfig.addPassthroughCopy("src/assets/js");
-  eleventyConfig.addPassthroughCopy("src/assets/images");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("images");
+  // Single source of truth for assets: src/assets -> docs/assets
+  // (css, js, images, fonts). The layout references /assets/...
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+
+  // Custom domain file must survive every build (GitHub Pages)
+  eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
 
   return {
     dir: {

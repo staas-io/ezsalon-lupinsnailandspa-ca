@@ -1,0 +1,10 @@
+[
+  { "title": "Home", "url": "/" },
+  { "title": "About us", "url": "/about/" },
+  { "title": "Services", "url": "/services/" },
+  { "title": "Coupons", "url": "/coupons/" },
+  { "title": "Gallery", "url": "/gallery/" },
+  { "title": "Booking", "url": "https://lupinsnails.staas.io/book.html", "external": true },
+  { "title": "Policy", "url": "/policy/" },
+  { "title": "Contact us", "url": "/contact/" }
+]
