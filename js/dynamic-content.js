@@ -24,6 +24,7 @@ function renderServices(services) {
     return;
   }
   
+  const hl = 'h' + (listEl.dataset.headingLevel || '3');
   let html = '';
   services.forEach(service => {
     const name = escapeHtml(service.name || '');
@@ -31,7 +32,7 @@ function renderServices(services) {
     const duration = service.durationMinutes ? service.durationMinutes + ' min' : (service.duration || '');
     html += '<div class="service-item">';
     html += '  <div class="service-item__info">';
-    html += '    <h4 class="service-item__name">' + name + '</h4>';
+    html += '    <' + hl + ' class="service-item__name">' + name + '</' + hl + '>';
     if (service.description) {
       html += '    <p class="service-item__desc">' + escapeHtml(service.description) + '</p>';
     }
